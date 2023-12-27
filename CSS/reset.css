@@ -1,0 +1,87 @@
+/*
+This css file will reset the enitre HTML hompage website
+This reset will remove removes all the browser formatting from the main HTML elements and reference.
+*/
+
+/*
+This will affected every part of the webapge
+The diffrent parts have been group selected uisng thier tags
+*/
+
+/* CSS Reset */
+/* Reset margins, paddings, borders, font size, and list style */
+html, body, div, span, nav, aside, ul, img, h1, h2, h3, h4, h5, h6, p, table, td, th, a {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 95%;
+    vertical-align: baseline;
+    list-style: none;
+}
+
+/* Box sizing rules */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Remove default padding */
+ul, ol {
+    padding: 0;
+}
+
+/* Block level elements */
+article, aside, details, figcaption, figure, footer, header, main, nav, section, summary {
+    display: block;
+}
+
+/* HTML5 hidden attribute */
+[hidden] {
+    display: none;
+}
+
+/* Basic body styles */
+body {
+    line-height: 1.6;
+    font-family: Arial, sans-serif; /* Adjust the font family as needed */
+    color: #333; /* Default text color */
+}
+
+/* Image and video styles */
+img, video {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+/* Link styles */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Standardize form elements */
+button, input, optgroup, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+}
+
+/* Adjust the HTML element font size */
+html {
+    font-size: 62.5%; /* 1rem = 10px */
+}
+
+/* Style for horizontal rules */
+hr {
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible;
+}
+
+/* Additional resets for specific elements can be added as needed */
