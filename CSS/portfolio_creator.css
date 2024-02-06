@@ -1,0 +1,79 @@
+/* General styles to match the login page's color scheme */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4; /* Light grey background similar to the login page */
+}
+
+/* Header styles with a light color and layout */
+header {
+    background-color: #e6e6fa; /* Light blue background for the header */
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: flex-start; /* Align children to the left */
+}
+
+/* Title styles, placed at the top left */
+header h1 {
+    font-size: 1em; /* Moderately large font size for the title */
+    color: #333; /* Dark grey color for the text */
+    margin-bottom: 10px; /* Adds a little space below the title */
+}
+
+/* Navigation bar styles */
+.navbar {
+    display: flex;
+    justify-content: flex-start;
+    background: none; /* Transparent background */
+    padding-left: 0; /* No padding to align with the title */
+}
+
+/* Navigation bar list styles */
+.navbar ul {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    margin: 0; /* Removes default margin */
+}
+
+/* Navigation bar link styles */
+.navbar a {
+    text-decoration: none;
+    padding: 10px 15px;
+    color: #333; /* Dark grey color for the text */
+    font-size: 0.9em; /* Slightly smaller font size for a more refined look */
+}
+
+/* Adds a separator between nav links */
+.navbar li:not(:last-child)::after {
+    content: '|';
+    color: #333;
+    margin-left: 15px;
+}
+
+/* Toolbar styles, aligned to the right */
+.toolbar {
+    display: flex;
+    justify-content: flex-end;
+    background: darkgray; /* Transparent background */
+    width: 100%; /* Ensure the toolbar spans the full width */
+    padding-right: 20px; /* Aligns toolbar content to the right */
+}
+
+/* Toolbar list styles */
+.toolbar ul {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    margin: 0; /* Removes default margin */
+}
+
+/* Toolbar link styles */
+.toolbar a {
+    text-decoration: none;
+    padding: 10px 15px;
+    color: #333; /* Dark grey color for the text */
+    font-size: 0.9em; /* Slightly smaller font size for a more refined look */
+}

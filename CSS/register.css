@@ -1,0 +1,89 @@
+/* This CSS file styles the register page */
+
+/* Applies a default font and centers content vertically and horizontally */
+body {
+    font-family: Arial, sans-serif; /* Sets sans-serif font for the page */
+    display: flex; /* Enables flexbox layout to center children */
+    justify-content: center; /* Centers children horizontally in the container */
+    align-items: center; /* Centers children vertically in the container */
+    flex-direction: column; /* Stacks children elements in a column */
+    height: 100vh; /* Makes the body full viewport height */
+    background: #e0e0f8; /* Lighter shade of blue for background */
+}
+
+/* Centers the title text and adds spacing below */
+h1 {
+    text-align: center; /* Aligns the heading text to the center */
+    margin-bottom: 20px; /* Adds space below the heading */
+    font-size: xx-large; /* Sets a very large font size for the heading */
+    color: #3a5fcd; /* Deeper shade of blue for headings */
+}
+
+/* Centers the section text and adds spacing below */
+section {
+    text-align: center; /* Aligns the text in this section to the center */
+    margin-bottom: 20px; /* Adds space below the section */
+    font-size: large; /* Sets a large font size for the text */
+    color: #4169E1; /* Keeps in line with the blue theme */
+}
+
+/* Adds border, padding, and shadow to the form fieldset */
+fieldset {
+    border: 1px solid #b0c4de; /* Light steel blue for border */
+    padding: 20px; /* Adds padding inside the fieldset */
+    background: #f4f4f4; /* Sets a light grey background color */
+    border-radius: 8px; /* Rounds the corners of the fieldset */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+    font-size: large; /* Increases the font size for better readability */
+}
+
+/* Styles the input fields with padding and a border */
+input[type="email"],
+input[type="password"] {
+    width: calc(100% - 5px); /* Adjusts the input width, subtracting padding */
+    padding: 15px; /* Adds more padding for more text */
+    margin-bottom: 20px; /* Adds space below each input field */
+    border: 1px solid #aaa; /* Sets a grey border for the input fields */
+    border-radius: 4px; /* Rounds the corners of the input fields */
+    font-size: medium; /* Sets a medium font size for text inside inputs */
+}
+
+/* Sets the button padding, background color, and text color */
+button {
+    padding: 15px 30px; /* Increases padding for a larger button */
+    margin-left: 70px; /* Offsets button to the left */
+    background: #4169E1; /* Sets a royal blue background for the button */
+    color: white; /* Sets the text color to white for contrast */
+    border: none; /* Removes the default button border */
+    border-radius: 4px; /* Rounds the corners of the button */
+    cursor: pointer; /* Changes the cursor to a pointer on hover */
+    font-size: medium; /* Sets a medium font size for the button text */
+}
+
+/* Changes button background color on hover for visual feedback */
+button:hover {
+    background: #3659b5; /* Darkens the button color on hover */
+}
+
+/* Removes text decoration from links and sets their color */
+a {
+    text-decoration: none; /* Removes the underline from links */
+    color: #4169E1; /* Sets the link color to match the button */
+    display: block; /* Makes each link take up its own line */
+    margin-top: 10px; /* Adds space above each link */
+    text-align: center; /* Centers the link text */
+    font-size: small; /* Sets a smaller font size for the link text */
+}
+
+/* Styles the form with padding, background color, and shadow */
+form {
+    margin: auto; /* Centers the form in the available space */
+    padding: 40px; /* Adds padding inside the form */
+    background: #fff; /* Sets the form background color to white */
+    border-radius: 8px; /* Rounds the corners of the form */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Adds a shadow for the form */
+    width: 400px; /* Sets a fixed width for the form */
+    display: flex; /* Enables flexbox layout within the form */
+    flex-direction: column; /* Stacks form elements in a column */
+    align-items: center; /* Centers form elements horizontally */
+}
