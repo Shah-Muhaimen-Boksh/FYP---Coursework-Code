@@ -1,0 +1,133 @@
+/* This CSS file styles the blog page */
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4; /* Light grey background similar to the login page */
+}
+
+/* Header styles with a light color and layout */
+header {
+    background-color: #e6e6fa; /* Light blue background for the header */
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center-align children */
+    border-top: 2px solid black; /* Black border at the top */
+    border-bottom: 0.5px solid black; /* Black border at the bottom */
+    border-right: 2px solid black; /* Black border at the top */
+    border-left: 0.5px solid black; /* Black border at the bottom */
+    width: 100%; /* Optional, depending on desired layout */
+}
+
+/* Title styles, placed at the top left */
+header h1 {
+    font-size: 1.1em; /* Moderately large font size for the title */
+    color: #333; /* Dark grey color for the text */
+    margin-bottom: 5px; /* Adds a little space below the title */
+}
+
+/* Navigation bar styles */
+.navbar {
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    width: 100%; /* Match parent width */
+    background: none; /* Transparent background */
+    padding-left: 0; /* No padding to align with the title */
+    margin-bottom: 5px; /* Adds a little space below the title */
+}
+
+/* Navigation bar list styles */
+.navbar ul {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    margin: 0; /* Removes default margin */
+    justify-content: center; /* Center items */
+}
+
+/* Navigation bar link styles */
+.navbar a {
+    text-decoration: none;
+    padding: 10px 15px;
+    color: #333; /* Dark grey color for the text */
+    font-size: 1em; /* Slightly smaller font size for a more refined look */
+}
+
+/* Adds a separator between nav links */
+.navbar li:not(:last-child)::after {
+    content: '|';
+    color: #333;
+    margin-left: 15px;
+}
+
+/* Adds border, padding, and shadow to the form fieldset */
+fieldset {
+    border: 0.5px solid black; /* Sets a blac border */
+    padding: 30px; /* Adds padding inside the fieldset */
+    background: #E6E6FA; /* Sets a light blue background */
+    border-radius: 8px; /* Rounds the corners of the fieldset */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+    font-size: large; /* Increases the font size for better readability */
+}
+
+/* Styles the input fields with padding and a border */
+input[type="text"], textarea{
+    width: calc(100% - 5px); /* Adjusts the input width, subtracting padding */
+    padding: 15px; /* Adds more padding for more text */
+    margin-bottom: 20px; /* Adds space below each input field */
+    border: 1px solid #ccc; /* Sets a grey border for the input fields */
+    border-radius: 4px; /* Rounds the corners of the input fields */
+    font-size: medium; /* Sets a medium font size for text inside inputs */
+}
+
+/* Sets the button padding, background color, and text color */
+button {
+    padding: 15px 30px; /* Increases padding for a larger button */
+    background: #4169E1; /* Sets a royal blue background for the button */
+    color: white; /* Sets the text color to white for contrast */
+    border: none; /* Removes the default button border */
+    border-radius: 4px; /* Rounds the corners of the button */
+    cursor: pointer; /* Changes the cursor to a pointer on hover */
+    font-size: medium; /* Sets a medium font size for the button text */
+    align-self: center; /* Centers the button within its flex container */
+    margin: 10px auto; /* Center the button with automatic horizontal margins */
+    display: block; /* Ensure the button is a block-level element for margin auto to work */
+}
+
+/* Changes button background color on hover for visual feedback */
+button:hover {
+    background: #3659b5; /* Darkens the button color on hover */
+}
+
+/* Container for the form, positioning it on the right and centering vertically */
+.form-container {
+    display: flex;
+    justify-content: flex-end; /* Aligns the form to the right */
+    align-items: center; /* Centers the form vertically */
+    position: absolute; /* Allows precise positioning */
+    top: 10%; /* Align top edge with the viewport */
+    right: 0; /* Align right edge with the viewport */
+    bottom: 0; /* Align bottom edge with the viewport */
+    left: 70%; /* Start from the middle of the viewport to the right */
+}
+
+/* Update form styling for this layout */
+form {
+    margin-right: auto; /* Centers the form in the .form-container */
+    margin-left: 50px; /* Adds some space from the left edge (optional) */
+    /* Keep the rest of your form styles unchanged */
+   /* padding: 15px; /* Adds padding inside the form */
+    /* background: #fff; /* Sets the form background color to white */
+    /* border-radius: 8px; /* Rounds the corners of the form */
+   /*  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Adds a shadow for the form */
+    width: 400px; /* Sets a fixed width for the form */
+    display: flex; /* Enables flexbox layout within the form */
+    flex-direction: column; /* Stacks form elements in a column */
+    align-items: center; /* Centers form elements horizontally */
+}
+
+
+
+

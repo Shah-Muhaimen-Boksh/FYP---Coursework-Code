@@ -49,13 +49,14 @@ input[type="password"] {
 /* Sets the button padding, background color, and text color */
 button {
     padding: 15px 30px; /* Increases padding for a larger button */
-    margin-left: 75px; /* Offsets button to the left */
     background: #4169E1; /* Sets a royal blue background for the button */
     color: white; /* Sets the text color to white for contrast */
     border: none; /* Removes the default button border */
     border-radius: 4px; /* Rounds the corners of the button */
     cursor: pointer; /* Changes the cursor to a pointer on hover */
     font-size: medium; /* Sets a medium font size for the button text */
+    margin: 10px auto; /* Center the button with automatic horizontal margins */
+    display: block; /* Ensure the button is a block-level element for margin auto to work */
 }
 
 /* Changes button background color on hover for visual feedback */
