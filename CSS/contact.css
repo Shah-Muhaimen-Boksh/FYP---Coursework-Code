@@ -1,4 +1,4 @@
-/* This CSS file styles the portfolio creator page */
+/* This CSS file styles the contact page */
 
 body, html {
     margin: 0;
@@ -70,16 +70,21 @@ fieldset {
     border-radius: 8px; /* Rounds the corners of the fieldset */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
     font-size: large; /* Increases the font size for better readability */
+    width: 150%;
 }
 
 /* Styles the input fields with padding and a border */
-input[type="text"], textarea{
-    width: calc(100% - 5px); /* Adjusts the input width, subtracting padding */
-    padding: 15px; /* Adds more padding for more text */
+input[type="text"], input[type="email"], textarea{
+    width: calc(100% - 20px); /* Adjusts the input width, subtracting padding */
+    padding: 8px; /* Adds more padding for more text */
     margin-bottom: 20px; /* Adds space below each input field */
     border: 1px solid #ccc; /* Sets a grey border for the input fields */
     border-radius: 4px; /* Rounds the corners of the input fields */
     font-size: medium; /* Sets a medium font size for text inside inputs */
+}
+
+textarea{
+    height: 150px;
 }
 
 /* Sets the button padding, background color, and text color */
@@ -104,24 +109,20 @@ button:hover {
 /* Container for the form, positioning it on the right and centering vertically */
 .form-container {
     display: flex;
-    justify-content: flex-end; /* Aligns the form to the right */
+    justify-content: center; /* Aligns the form to the centre */
     align-items: center; /* Centers the form vertically */
     position: absolute; /* Allows precise positioning */
-    top: 10%; /* Align top edge with the viewport */
+    top: 12%; /* Align top edge with the viewport */
     right: 0; /* Align right edge with the viewport */
     bottom: 0; /* Align bottom edge with the viewport */
-    left: 70%; /* Start from the middle of the viewport to the right */
+    left: 35%; /* Start from the middle of the viewport to the right */
 }
 
 /* Update form styling for this layout */
 form {
     margin-right: auto; /* Centers the form in the .form-container */
     margin-left: 50px; /* Adds some space from the left edge (optional) */
-    /* Keep the rest of your form styles unchanged */
-   /* padding: 15px; /* Adds padding inside the form */
-    /* background: #fff; /* Sets the form background color to white */
-    /* border-radius: 8px; /* Rounds the corners of the form */
-   /*  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Adds a shadow for the form */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Adds a shadow for the form */
     width: 400px; /* Sets a fixed width for the form */
     display: flex; /* Enables flexbox layout within the form */
     flex-direction: column; /* Stacks form elements in a column */

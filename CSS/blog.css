@@ -82,6 +82,10 @@ input[type="text"], textarea{
     font-size: medium; /* Sets a medium font size for text inside inputs */
 }
 
+textarea{
+    height: 250px; /* Adjust this value to increase or decrease the vertical size */
+}
+
 /* Sets the button padding, background color, and text color */
 button {
     padding: 15px 30px; /* Increases padding for a larger button */
@@ -117,7 +121,6 @@ button:hover {
 form {
     margin-right: auto; /* Centers the form in the .form-container */
     margin-left: 50px; /* Adds some space from the left edge (optional) */
-    /* Keep the rest of your form styles unchanged */
    /* padding: 15px; /* Adds padding inside the form */
     /* background: #fff; /* Sets the form background color to white */
     /* border-radius: 8px; /* Rounds the corners of the form */
