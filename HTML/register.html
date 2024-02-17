@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- This line links a CSS stylesheet  located in a 'CSS' folder, using '../' to navigate up one level up from the current directory -->
+    <!-- Links a CSS stylesheet to reset the page located in a 'CSS' folder, using '../' to navigate up one level up from the current directory -->
     <link rel="stylesheet" href="../CSS/reset.css">
-    <!-- This line links a CSS stylesheet  located in a 'CSS' folder, using '../' to navigate up one level up from the current directory -->
+    <!-- Links a CSS stylesheet to style the page located in a 'CSS' folder, using '../' to navigate up one level up from the current directory -->
     <link rel="stylesheet" href="../CSS/register.css">
 
     <!-- The <title> tag sets the name of the webpage seen on the tab in a web browser -->
@@ -34,38 +34,49 @@
 
     <!-- The <aside> tag defines a portion of the document which is indirectly related to the document's main content -->
     <aside>
-    <!-- The <form> tag is used to create an HTML form for user input -->
-    <form method="POST" action="register.php">
-        <!-- The <fieldset> tag is used to group related elements in a form -->
-        <fieldset>
-                <!-- The <p> tags here are used to group each label-input pair -->
-                <p class="email">
-                    <!-- The <label> tag defines a label for an <input> element -->
-                    <label for="email">Email Address</label>
-                    <br> <!-- The <br> tag is a break which creates a new line -->
-                    <!-- The <input> tag specifies an input field where the user can enter data, type="email" is for email addresses -->
-                    <input type="email" name="email">
-                </p>
+        <!-- The <form> tag is used to create an HTML form for user input -->
+        <!-- POST method is for sending user data-->
+        <!-- Form has been linked with the login.php file-->   
+        <form method="POST" action="register.php">
+            <!-- The <fieldset> tag is used to group related elements in a form -->
+            <fieldset>
+                    <!-- The <p> tags here are used to group each label-input pair -->
+                    <p class="email">
+                        <!-- The <label> tag defines a label for an <input> element -->
+                        <!-- User will input their email address here -->
+                        <label for="email">Email Address</label>
+                        <br> <!-- The <br> tag is a break which creates a new line -->
+                        <!-- The <input> tag specifies an input field where the user can enter data, type="email" is for email addresses -->
+                        <input type="email" name="email">
+                    </p>
 
-                <!-- The <p> tags here are used to group each label-input pair -->
-                <p class="password">
-                    <!-- The <label> tag defines a label for an <input> element -->
-                    <label for="password">Password</label>
-                    <br> <!-- The <br> tag is a break which creates a new line -->
-                    <!-- type="password" is for password fields, hiding the input text -->
-                    <input type="password" name="password" required>
-                </p>
+                    <!-- The <p> tags here are used to group each label-input pair -->
+                    <p class="password">
+                        <!-- The <label> tag defines a label for an <input> element -->
+                        <!-- User will input their password here, which must meet specified criteria -->    
+                        <label for="password">Password</label>
+                        <br> <!-- The <br> tag is a break which creates a new line -->
+                        <!-- type="password" is for password fields, hiding the input text -->
+                        <!-- The pattern attribute specifies a regex for the password validation -->
+                        <!-- The password must be between 10-15 characters, include at least one number, one uppercase letter, and one special character -->
+                        <input type="password" name="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{10,15}" title="Password must be between 10-15 characters and include at least one number, one uppercase letter, and one special character.">
+                    </p>
 
-                <!-- The <p> tags here are used to group each label-input pair -->
-                <p class="button">
-                    <!-- The <button> tag represents a clickable button -->
-                    <button type="submit">Register</button>
-                </p>
-        </fieldset>
-    </form>
-</aside>
+                    <!-- The <p> tags here are used to group each label-input pair -->
+                    <p class="button">
+                        <!-- Submission button for the form -->
+                        <!-- The <button> tag represents a clickable button -->
+                        <button type="submit">Register</button>
+                    </p>
+            </fieldset>
+        </form>
+    </aside>
 
-<footer><a href="login.html">Login</a></footer>
+    <!-- The <footer> tag defines the footer section of the document -->
+    <footer>
+        <!-- The <footer> tag defines the footer section of the document -->
+        <a href="login.html">Login</a>
+    </footer>
 
 </body>
 <!-- The closing </html> tag signifies the end of the HTML document -->
