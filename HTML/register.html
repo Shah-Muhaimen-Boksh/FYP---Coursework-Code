@@ -37,7 +37,7 @@
         <!-- The <form> tag is used to create an HTML form for user input -->
         <!-- POST method is for sending user data-->
         <!-- Form has been linked with the login.php file-->   
-        <form method="POST" action="register.php">
+        <form action="../PHP/register.php" method="post">
             <!-- The <fieldset> tag is used to group related elements in a form -->
             <fieldset>
                     <!-- The <p> tags here are used to group each label-input pair -->
@@ -61,6 +61,18 @@
                         <!-- The password must be between 10-15 characters, include at least one number, one uppercase letter, and one special character -->
                         <input type="password" name="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{10,15}" title="Password must be between 10-15 characters and include at least one number, one uppercase letter, and one special character.">
                     </p>
+
+                    <!-- The <p> tags here are used to group each label-input pair -->
+                        <p class="confimr_password">
+                            <!-- The <label> tag defines a label for an <input> element -->
+                            <!-- User will input their password here again to confirm the password, which must meet specified criteria -->    
+                            <label for="confimr_password">Confirm Password</label>
+                            <br> <!-- The <br> tag is a break which creates a new line -->
+                            <!-- type="password" is for password fields, hiding the input text -->
+                            <!-- The pattern attribute specifies a regex for the password validation -->
+                            <!-- The password must be between 10-15 characters, include at least one number, one uppercase letter, and one special character -->
+                            <input type="password" name="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{10,15}" title="Password must be between 10-15 characters and include at least one number, one uppercase letter, and one special character.">
+                        </p>
 
                     <!-- The <p> tags here are used to group each label-input pair -->
                     <p class="button">

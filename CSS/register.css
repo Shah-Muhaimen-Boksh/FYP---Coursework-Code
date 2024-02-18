@@ -14,7 +14,7 @@ body {
 /* Centers the title text and adds spacing below */
 h1 {
     text-align: center; /* Aligns the heading text to the center */
-    margin-bottom: 20px; /* Adds space below the heading */
+    margin-bottom: 15px; /* Adds space below the heading */
     font-size: xx-large; /* Sets a very large font size for the heading */
     color: #3a5fcd; /* Deeper shade of blue for headings */
 }
@@ -39,7 +39,8 @@ fieldset {
 
 /* Styles the input fields with padding and a border */
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+input[type="confirm_password"] {
     width: calc(100% - 5px); /* Adjusts the input width, subtracting padding */
     padding: 15px; /* Adds more padding for more text */
     margin-bottom: 20px; /* Adds space below each input field */
