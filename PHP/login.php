@@ -1,11 +1,11 @@
 <?php
-    session_start();
-    if (isset($_SESSION["user"])){
-        header("Location: portfolio_creator.php");
+    session_start(); // Start a new or resume the existing session
+    if (isset($_SESSION["user"])){ // Check if the "user" session variable is set
+        header("Location: portfolio_creator.php"); // Redirect to portfolio_creator.php if the user is logged in
     }
 ?>
 
-<!-- This HTML document creates a login page with a form for user authentication -->
+<!-- This php document creates a login page with a form for user authentication and checks the information with what is stored on a table wtihin a database-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,26 +48,26 @@
             <!-- The <fieldset> tag is used to group related elements in a form -->
             <fieldset>
                     <?php
-                    if(isset($_POST["login"])){
-                        $email = $_POST["email"];
-                        $password = $_POST["password"];
-                            require_once "database.php";
-                            $sql = "SELECT * FROM users WHERE email = '$email'";
-                            $result = mysqli_query($database_connection, $sql);
-                            $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
-                            if ($user){
-                                if(password_verify($password, $user["password"])){
-                                    session_start();
-                                    $_SESSION["user"] = "yes";
-                                    header("Location: portfolio_creator.php");
-                                    exit();
+                    if(isset($_POST["login"])){ // Check if login form was submitted
+                        $email = $_POST["email"]; // Retrieve email from form
+                        $password = $_POST["password"]; // Retrieve password from form
+                            require_once "database.php"; // Include database connection file
+                            $sql = "SELECT * FROM users WHERE email = '$email'"; // Prepare SQL to fetch user by email
+                            $result = mysqli_query($database_connection, $sql); // Execute the query
+                            $user = mysqli_fetch_array($result, MYSQLI_ASSOC); // Fetch the user's data
+                            if ($user){ // Check if user exists
+                                if(password_verify($password, $user["password"])){ // Verify password
+                                    session_start(); // Start a new session
+                                    $_SESSION["user"] = "yes"; // Set session variable for user
+                                    header("Location: portfolio_creator.php"); // Redirect to portfolio creator page
+                                    exit(); // Terminate script execution
                                 }
                                 else{
-                                    echo "Password is not correct";
+                                    echo "Password is not correct"; // Display error message for incorrect password
                                 }
                             }
                             else{
-                                echo "Email does not exist";
+                                echo "Email does not exist"; // Display error message for non-existent email
                             }
                     }
                     ?>
