@@ -1,11 +1,11 @@
 <?php
-    session_start();
-    if (isset($_SESSION["user"])){
-        header("Location: portfolio_creator.php");
+    session_start(); // Start a new or resume the existing session
+    if (isset($_SESSION["user"])){ // Check if the "user" session variable is set
+        header("Location: portfolio_creator.php"); // Redirect to portfolio_creator.php if the user is logged in
     }
 ?>
 
-<!-- This HTML document creates a register page with a form to store user login information -->
+<!-- This php document creates a register page with a form to store user login information which is stored in a -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,66 +43,71 @@
     <aside>
         <!-- The <form> tag is used to create an HTML form for user input -->
         <!-- POST method is for sending user data-->
-        <!-- Form has been linked with the login.php file-->   
+        <!-- Form has been linked with the register.php file-->   
         <form action="register.php" method="post">
             <!-- The <fieldset> tag is used to group related elements in a form -->
             <fieldset>
-                    <?php
+                   <?php
+                    if(isset($_POST["submit"])){ // Check if form was submitted
+                        $email = $_POST["email"]; // Retrieve email from form
+                        $password = $_POST["password"]; // Retrieve password from form
+                        $confirm_password = $_POST["confirm_password"]; // Retrieve confirmed password from form
 
-                    if(isset($_POST["submit"])){
-                        $email = $_POST["email"];
-                        $password = $_POST["password"];
-                        $confirm_password = $_POST["confirm_password"];
+                        $password_hash = password_hash($password, PASSWORD_DEFAULT); // Hash the password
 
-                        $password_hash = password_hash($password, PASSWORD_DEFAULT);
+                        $errors = array(); // Initialize an array to store potential errors
 
-                        $errors = array();
-
+                         // Check if any field is empty
                         if  (empty($email) OR empty($password) OR empty($confirm_password)){
-                            array_push($errors, "All fields are required");
+                            array_push($errors, "All fields are required"); // Add error message to errors array
                         }
 
+                        // Validate email format
                         if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
-                            array_push($errors, "Email is not valid");
+                            array_push($errors, "Email is not valid"); // Add error message to errors array
                         }
 
+                        // Check password length
                         if (strlen($password) < 10 OR strlen($password) > 15){
-                            array_push($errors, "Password must be between 10-15 characters long");
+                            array_push($errors, "Password must be between 10-15 characters long"); // Add error message to errors array
                         }
 
+                        // Check if passwords match
                         if($password !== $confirm_password){
-                            array_push($errors, "Passwords do not match");
+                            array_push($errors, "Passwords do not match"); // Add error message to errors array
                         }
 
-                        require_once "database.php";
+                        require_once "database.php"; // Include database connection file
 
+                        // Prepare SQL to check if email already exists
                         $sql = "SELECT * FROM users WHERE email = '$email'";
                         $result = mysqli_query($database_connection, $sql);
                         $row_count = mysqli_num_rows($result);
                         if($row_count > 0){
-                            array_push($errors, "Email already exists");
+                            array_push($errors, "Email already exists"); // Add error message to errors array
                         }
 
+                        // Display errors if any
                         if (count($errors) > 0){
                             foreach($errors as $error){
-                                echo $error;
+                                echo $error; // Display each error
                             }
                         }
                         else{
+                            // Prepare SQL to insert new user
                             $sql = "INSERT INTO users (email, password) VALUES (?, ?)";
                             $stmt = mysqli_stmt_init($database_connection);
                             $prepare_stmt = mysqli_stmt_prepare($stmt, $sql);
                             if ($prepare_stmt){
-                                mysqli_stmt_bind_param($stmt, "ss", $email, $password_hash);
-                                mysqli_stmt_execute($stmt);
-                                echo "Account Successfully Registered";
+                                mysqli_stmt_bind_param($stmt, "ss", $email, $password_hash); // Bind parameters to statement
+                                mysqli_stmt_execute($stmt); // Execute statement
+                                echo "Account Successfully Registered"; // Display success message
                             }
                             else{
-                                die("Something went wrong");
+                                die("Something went wrong"); // Display error message if statement preparation fails
                             }
                         }
                     }
-
                     ?>
 
                     <!-- The <p> tags here are used to group each label-input pair -->
