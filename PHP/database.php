@@ -3,7 +3,7 @@
 $hostName = "localhost";
 $dbUsers = "root";
 $dbPassword = "";
-$dbName = "register_account";
+$dbName = "portfolio_creator";
 $database_connection = mysqli_connect($hostName, $dbUsers, $dbPassword, $dbName);
 
 if (!$database_connection) {
