@@ -1,4 +1,11 @@
-<!-- This HTML document creates a register page with a form to store user login information -->
+<?php
+    session_start();
+    if (isset($_SESSION["user"])){
+        header("Location: portfolio_creator.php");
+    }
+?>
+
+<!-- This HTML document creates a login page with a form for user authentication -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,10 +15,10 @@
     <!-- Links a CSS stylesheet to reset the page located in a 'CSS' folder, using '../' to navigate up one level up from the current directory -->
     <link rel="stylesheet" href="../CSS/reset.css">
     <!-- Links a CSS stylesheet to style the page located in a 'CSS' folder, using '../' to navigate up one level up from the current directory -->
-    <link rel="stylesheet" href="../CSS/register.css">
+    <link rel="stylesheet" href="../CSS/login.css">
 
     <!-- The <title> tag sets the name of the webpage seen on the tab in a web browser -->
-    <title>Portfolio Creator - Register</title>
+    <title>Portfolio Creator - Login</title>
 
 </head>
 
@@ -21,14 +28,14 @@
     <!-- The <hgroup> tag is used to group header elements -->
     <hgroup>
         <!-- The <h1> tag defines the main heading of the document. -->
-        <h1>Register</h1>
+        <h1>Login</h1>     
     </hgroup>
 
     <!-- The <section> tag defines a section in a document -->
     <section>
         <!-- The <p> tag represents a paragraph of text -->
         <p>
-            Please fill in the form in order to create an account
+            Please enter your details in order to proceed further
         </p>
     </section>
 
@@ -36,14 +43,39 @@
     <aside>
         <!-- The <form> tag is used to create an HTML form for user input -->
         <!-- POST method is for sending user data-->
-        <!-- Form has been linked with the login.php file-->   
-        <form action="../PHP/register.php" method="post">
+        <!-- Form has been linked with the login.php file-->    
+        <form action="login.php" method="post">
             <!-- The <fieldset> tag is used to group related elements in a form -->
             <fieldset>
+                    <?php
+                    if(isset($_POST["login"])){
+                        $email = $_POST["email"];
+                        $password = $_POST["password"];
+                            require_once "database.php";
+                            $sql = "SELECT * FROM users WHERE email = '$email'";
+                            $result = mysqli_query($database_connection, $sql);
+                            $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                            if ($user){
+                                if(password_verify($password, $user["password"])){
+                                    session_start();
+                                    $_SESSION["user"] = "yes";
+                                    header("Location: portfolio_creator.php");
+                                    exit();
+                                }
+                                else{
+                                    echo "Password is not correct";
+                                }
+                            }
+                            else{
+                                echo "Email does not exist";
+                            }
+                    }
+                    ?>
+
                     <!-- The <p> tags here are used to group each label-input pair -->
                     <p class="email">
                         <!-- The <label> tag defines a label for an <input> element -->
-                        <!-- User will input their email address here -->
+                        <!-- User will input their email address here -->   
                         <label for="email">Email Address</label>
                         <br> <!-- The <br> tag is a break which creates a new line -->
                         <!-- The <input> tag specifies an input field where the user can enter data, type="email" is for email addresses -->
@@ -53,7 +85,7 @@
                     <!-- The <p> tags here are used to group each label-input pair -->
                     <p class="password">
                         <!-- The <label> tag defines a label for an <input> element -->
-                        <!-- User will input their password here, which must meet specified criteria -->    
+                        <!-- User will input their password here, which must meet specified criteria -->
                         <label for="password">Password</label>
                         <br> <!-- The <br> tag is a break which creates a new line -->
                         <!-- type="password" is for password fields, hiding the input text -->
@@ -63,22 +95,10 @@
                     </p>
 
                     <!-- The <p> tags here are used to group each label-input pair -->
-                        <p class="confimr_password">
-                            <!-- The <label> tag defines a label for an <input> element -->
-                            <!-- User will input their password here again to confirm the password, which must meet specified criteria -->    
-                            <label for="confimr_password">Confirm Password</label>
-                            <br> <!-- The <br> tag is a break which creates a new line -->
-                            <!-- type="password" is for password fields, hiding the input text -->
-                            <!-- The pattern attribute specifies a regex for the password validation -->
-                            <!-- The password must be between 10-15 characters, include at least one number, one uppercase letter, and one special character -->
-                            <input type="password" name="confimr_password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{10,15}" title="Password must be between 10-15 characters and include at least one number, one uppercase letter, and one special character.">
-                        </p>
-
-                    <!-- The <p> tags here are used to group each label-input pair -->
                     <p class="button">
-                        <!-- Submission button for the form -->
                         <!-- The <button> tag represents a clickable button -->
-                        <button type="submit">Register</button>
+                        <!-- Submission button for the form -->
+                        <button type="submit" name="login">Login</button>
                     </p>
             </fieldset>
         </form>
@@ -86,8 +106,8 @@
 
     <!-- The <footer> tag defines the footer section of the document -->
     <footer>
-        <!-- The <footer> tag defines the footer section of the document -->
-        <a href="login.html">Login</a>
+        <!-- Provides a link to the registration page for new users -->
+        <a href="register.php">Register Account</a>
     </footer>
 
 </body>

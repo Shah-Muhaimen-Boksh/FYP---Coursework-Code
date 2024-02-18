@@ -14,7 +14,7 @@ body {
 /* Centers the title text and adds spacing below */
 h1 {
     text-align: center; /* Aligns the heading text to the center */
-    margin-bottom: 15px; /* Adds space below the heading */
+    margin-bottom: 10px; /* Adds space below the heading */
     font-size: xx-large; /* Sets a very large font size for the heading */
     color: #3a5fcd; /* Deeper shade of blue for headings */
 }
