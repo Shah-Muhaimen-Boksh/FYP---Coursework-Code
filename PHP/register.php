@@ -57,21 +57,6 @@
 
                         $errors = array(); // Initialize an array to store potential errors
 
-                         // Check if any field is empty
-                        if  (empty($email) OR empty($password) OR empty($confirm_password)){
-                            array_push($errors, "All fields are required"); // Add error message to errors array
-                        }
-
-                        // Validate email format
-                        if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
-                            array_push($errors, "Email is not valid"); // Add error message to errors array
-                        }
-
-                        // Check password length
-                        if (strlen($password) < 10 OR strlen($password) > 15){
-                            array_push($errors, "Password must be between 10-15 characters long"); // Add error message to errors array
-                        }
-
                         // Check if passwords match
                         if($password !== $confirm_password){
                             array_push($errors, "Passwords do not match"); // Add error message to errors array
