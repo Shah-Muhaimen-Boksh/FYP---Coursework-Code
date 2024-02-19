@@ -15,7 +15,7 @@ Instructions to run the project:
 - You will now be able to use the 
 - Use the php version of each file to properly use the project
 
-- when opening php files on a IDE i.e VS code an error message might pop up 
+- when opening php files on a IDE i.e VS code an error message might pop up: 
     "Cannot validate since no PHP executable is set. Use the setting 'php.validate.executablePath' to configure the PHP executable."
     is this occurs follow these steps:
         - locate setting.json
@@ -33,5 +33,5 @@ Blog Post Creator - Allows the user to post blog posts
 Bog Post Viewer - Allows other people to view the users blog posts
 Contact Page - Allows the user to send messages to admin for any questions, complaints or suggestions 
 
-If any quries or questions please contact me:
+If any queries or questions please contact me:
  - email: ec21377@qmul.ac.uk
