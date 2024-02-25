@@ -66,31 +66,34 @@
 
                         // Prepare SQL to check if email already exists
                         $sql = "SELECT * FROM users WHERE email = '$email'";
-                        $result = mysqli_query($database_connection, $sql);
-                        $row_count = mysqli_num_rows($result);
+                        $result = mysqli_query($database_connection, $sql); // Execute the query
+                        $row_count = mysqli_num_rows($result); // Count the number of rows returned
                         if($row_count > 0){
-                            array_push($errors, "Email already exists"); // Add error message to errors array
+                            array_push($errors, "Email already exists"); // If  email is already registered, add error to array
                         }
 
                         // Display errors if any
                         if (count($errors) > 0){
+                            // Loop through and display each error
                             foreach($errors as $error){
                                 echo $error; // Display each error
                             }
                         }
                         else{
-                            // Prepare SQL to insert new user
+                            // Prepare SQL to insert new user, using prepared statements to counter SQL injections
                             $sql = "INSERT INTO users (email, password) VALUES (?, ?)";
-                            $stmt = mysqli_stmt_init($database_connection);
-                            $prepare_stmt = mysqli_stmt_prepare($stmt, $sql);
+                            $stmt = mysqli_stmt_init($database_connection); // Initialize a statement
+                            $prepare_stmt = mysqli_stmt_prepare($stmt, $sql); // Prepare the SQL statement
                             if ($prepare_stmt){
                                 mysqli_stmt_bind_param($stmt, "ss", $email, $password_hash); // Bind parameters to statement
-                                mysqli_stmt_execute($stmt); // Execute statement
+                                mysqli_stmt_execute($stmt); // Execute statement , safely inserting the data
                                 echo "Account Successfully Registered"; // Display success message
                             }
                             else{
                                 die("Something went wrong"); // Display error message if statement preparation fails
                             }
+                            // Using prepared statements with parameter binding prevents SQL injection by separating SQL logic and data.
+
                         }
                     }
                     ?>
