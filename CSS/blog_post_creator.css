@@ -1,4 +1,4 @@
-/* This CSS file styles the contact page */
+/* This CSS file styles the blog post creator page */
 
 body, html {
     margin: 0;
@@ -74,7 +74,7 @@ fieldset {
 }
 
 /* Styles the input fields with padding and a border */
-input[type="text"], input[type="email"], textarea{
+input[type="text"], textarea{
     width: calc(100% - 20px); /* Adjusts the input width, subtracting padding */
     padding: 8px; /* Adds more padding for more text */
     margin-bottom: 20px; /* Adds space below each input field */
@@ -84,7 +84,7 @@ input[type="text"], input[type="email"], textarea{
 }
 
 textarea{
-    height: 150px;
+    height: 280px;
 }
 
 /* Sets the button padding, background color, and text color */

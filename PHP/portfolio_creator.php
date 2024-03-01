@@ -14,7 +14,6 @@
     
     <!-- Link this page to the CSS reset file -->
     <link rel="stylesheet" href="../CSS/reset.css">
-    
     <!-- Link this page to a CSS styling file -->
     <link rel="stylesheet" href="../CSS/portfolio_creator.css">
 
@@ -25,20 +24,21 @@
     <header>
         <div>
             <!-- Page header -->
-            <h1>Portfolio Creator Page - (User Email)</h1>
+            <h1>Portfolio Creator Page</h1>
         </div>
 
+        <!-- The navbar contains hypelinks to the other pages -->
         <div class="navbar">
             <nav>
                 <ul>
                     <!-- Link to the creator page -->
-                    <li><a href="portfolio_creator.php">Creator Page</a></li>
+                    <li><a href="portfolio_creator.php">Portfolio Creator Page</a></li>
                     <!-- Link to the viewing page -->
-                    <li><a href="portfolio_viewer.php">Viewing Page</a></li>
+                    <li><a href="portfolio_viewer.php">Portfolio Viewing Page</a></li>
                     <!-- Link to the blog post creator page -->
-                    <li><a href="blog_creator.php">Blog Post Creator Page</a></li>
+                    <li><a href="blog_post_creator.php">Blog Post Creator Page</a></li>
                     <!-- Link to the blog post viewer page -->
-                    <li><a href="blog_viewer.php">Blog Post Viewer Page</a></li>
+                    <li><a href="blog_post_viewer.php">Blog Post Viewer Page</a></li>
                     <!-- Link to the contact page -->
                     <li><a href="contact.php">Contact Page</a></li>
                     <!-- Link for logging out -->

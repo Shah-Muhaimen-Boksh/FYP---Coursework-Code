@@ -4,18 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Link this page to the CSS reset file -->
     <link rel="stylesheet" href="../CSS/reset.css">
-    <!-- Link this page to a CSS styling file -->
-    <link rel="stylesheet" href="../CSS/portfolio_viewer.css">
+    <link rel="stylesheet" href="../CSS/blog.css">
 
-    <title>Portfolio Viewer Page</title>
+    <title>Blog Post Viewer Page</title>
 </head>
 <body>
     <header>
         <div>
-            <h1>Portfolio Viewer Page </h1>
+            <h1>Blog Post Viewer Page</h1>
         </div>
+
         <!-- The navbar contains hypelinks to the other pages -->
         <div class="navbar">
             <nav>
@@ -36,7 +35,6 @@
             </nav>
         </div>
     </header>
-
 
 </body>
 </html>

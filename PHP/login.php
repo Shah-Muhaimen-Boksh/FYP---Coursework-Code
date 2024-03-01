@@ -5,7 +5,7 @@
     }
 ?>
 
-<!-- This php document creates a login page with a form for user authentication and checks the information with what is stored on a table wtihin a database-->
+<!-- This php document creates a login page with a form for user authentication and checks the information with what is stored on a users table wtihin a database-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +27,7 @@
 
     <!-- The <hgroup> tag is used to group header elements -->
     <hgroup>
-        <!-- The <h1> tag defines the main heading of the document. -->
+        <!-- The <h1> tag defines the main heading of the document -->
         <h1>Login</h1>     
     </hgroup>
 
@@ -79,7 +79,7 @@
                         <label for="email">Email Address</label>
                         <br> <!-- The <br> tag is a break which creates a new line -->
                         <!-- The <input> tag specifies an input field where the user can enter data, type="email" is for email addresses -->
-                        <input type="email" name="email">
+                        <input type="email" name="email" required>
                     </p>
 
                     <!-- The <p> tags here are used to group each label-input pair -->
@@ -98,7 +98,7 @@
                     <p class="button">
                         <!-- The <button> tag represents a clickable button -->
                         <!-- Submission button for the form -->
-                        <button type="submit" name="login">Login</button>
+                        <button type="submit" value="Login" name="login">Login</button>
                     </p>
             </fieldset>
         </form>

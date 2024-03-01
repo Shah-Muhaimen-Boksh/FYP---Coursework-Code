@@ -5,7 +5,7 @@
     }
 ?>
 
-<!-- This php document creates a register page with a form to store user login information which is stored in a -->
+<!-- This php document creates a register page with a form to store user login information which is stored in a table in a users table in a database-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,7 +48,7 @@
             <!-- The <fieldset> tag is used to group related elements in a form -->
             <fieldset>
                    <?php
-                    if(isset($_POST["submit"])){ // Check if form was submitted
+                    if(isset($_POST["register"])){ // Check if form was submitted
                         $email = $_POST["email"]; // Retrieve email from form
                         $password = $_POST["password"]; // Retrieve password from form
                         $confirm_password = $_POST["confirm_password"]; // Retrieve confirmed password from form
@@ -105,7 +105,7 @@
                         <label for="email">Email Address</label>
                         <br> <!-- The <br> tag is a break which creates a new line -->
                         <!-- The <input> tag specifies an input field where the user can enter data, type="email" is for email addresses -->
-                        <input type="email" name="email">
+                        <input type="email" name="email" required>
                     </p>
 
                     <!-- The <p> tags here are used to group each label-input pair -->
@@ -136,7 +136,7 @@
                     <p class="button">
                         <!-- Submission button for the form -->
                         <!-- The <button> tag represents a clickable button -->
-                        <button type="submit" name="submit">Register</button>
+                        <button type="submit" value="Register" name="register">Register</button>
                     </p>
             </fieldset>
         </form>
