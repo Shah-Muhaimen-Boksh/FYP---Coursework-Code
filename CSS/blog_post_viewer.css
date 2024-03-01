@@ -1,0 +1,116 @@
+/* This CSS file styles the blog post viewer page */
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4; /* Light grey background similar to the login page */
+}
+
+/* Header styles with a light color and layout */
+header {
+    background-color: #e6e6fa; /* Light blue background for the header */
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center-align children */
+    border-top: 2px solid black; /* Black border at the top */
+    border-bottom: 0.5px solid black; /* Black border at the bottom */
+    border-right: 2px solid black; /* Black border at the top */
+    border-left: 0.5px solid black; /* Black border at the bottom */
+    width: 100%; /* Optional, depending on desired layout */
+}
+
+/* Title styles, placed at the top left */
+header h1 {
+    font-size: 1.1em; /* Moderately large font size for the title */
+    color: #333; /* Dark grey color for the text */
+    margin-bottom: 5px; /* Adds a little space below the title */
+}
+
+/* Navigation bar styles */
+.navbar {
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    width: 100%; /* Match parent width */
+    background: none; /* Transparent background */
+    padding-left: 0; /* No padding to align with the title */
+    margin-bottom: 5px; /* Adds a little space below the title */
+}
+
+/* Navigation bar list styles */
+.navbar ul {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    margin: 0; /* Removes default margin */
+    justify-content: center; /* Center items */
+}
+
+/* Navigation bar link styles */
+.navbar a {
+    text-decoration: none;
+    padding: 10px 15px;
+    color: #333; /* Dark grey color for the text */
+    font-size: 1em; /* Slightly smaller font size for a more refined look */
+}
+
+/* Adds a separator between nav links */
+.navbar li:not(:last-child)::after {
+    content: '|';
+    color: #333;
+    margin-left: 15px;
+}
+
+/* Applies borders and layout styling to the table */
+.blog_post_table {
+    border-collapse: separate; /* Use 'separate' to handle border-radius correctly */
+    border-spacing: 0; /* Remove spacing between cells */
+    width: 60%;
+    margin: 20px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: #E6E6FA;
+    border: 0.5px solid black; /* Adds a black border around the table */
+    border-radius: 8px; /* Ensures the table corners are rounded */
+    overflow: hidden; /* Ensures contents do not overflow the table's rounded corners */
+}
+
+/* Styles for table headers to match form field labels */
+.blog_post_table th {
+    background-color: #4169E1;
+    color: white;
+    text-align: left;
+    padding: 12px;
+    /* No need for individual border-radius on th because of overflow: hidden on the table */
+}
+
+/* Styles for table data cells */
+.blog_post_table td {
+    border-top: 0.5px solid black; /* Optional: you can remove this if you want a cleaner look without internal borders */
+    padding: 10px;
+    color: #333;
+}
+
+/* Adds hover effect to rows for better user interaction feedback */
+.blog_post_table tr:hover {
+    background-color: #f4f4f4;
+}
+
+/* Styles for the message when there are no blog posts */
+.no_blog_post_message {
+    margin: 20px auto; /* Centers the message horizontally */
+    border: 0.5px solid black; /* Adds a black border */
+    border-radius: 8px; /* Rounds the corners */
+    width: fit-content; /* Adjusts the width to fit its content */
+    padding: 20px; /* Adds padding inside the border */
+    font-size: 24px; /* Increases the font size */
+    text-align: center; /* Centers the text horizontally */
+    display: block; /* Ensures the element is block-level for margin auto to work */
+    background-color: #f4f4f4; /* Optional: sets a background color */
+}
+
+
+
+
+
+

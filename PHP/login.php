@@ -1,6 +1,6 @@
 <?php
     session_start(); // Start a new or resume the existing session
-    if (isset($_SESSION["user"])){ // Check if the "user" session variable is set
+    if (isset($_SESSION["logged_in"])){ // Check if the "logged_in" session variable is set
         header("Location: portfolio_creator.php"); // Redirect to portfolio_creator.php if the user is logged in
     }
 ?>
@@ -51,14 +51,18 @@
                     if(isset($_POST["login"])){ // Check if login form was submitted
                         $email = $_POST["email"]; // Retrieve email from form
                         $password = $_POST["password"]; // Retrieve password from form
+
                             require_once "database.php"; // Include database connection file
+
                             $sql = "SELECT * FROM users WHERE email = '$email'"; // Prepare SQL to fetch user by email
                             $result = mysqli_query($database_connection, $sql); // Execute the query
                             $user = mysqli_fetch_array($result, MYSQLI_ASSOC); // Fetch the user's data
+
                             if ($user){ // Check if user exists
                                 if(password_verify($password, $user["password"])){ // Verify password
                                     session_start(); // Start a new session
-                                    $_SESSION["user"] = "yes"; // Set session variable for user
+                                    $_SESSION["logged_in"] = "yes"; // Set session variable for checking if the user is logged in
+                                    $_SESSION["user_id"] = $user["user_id"]; // Set session variable to store user_id
                                     header("Location: portfolio_creator.php"); // Redirect to portfolio creator page
                                     exit(); // Terminate script execution
                                 }

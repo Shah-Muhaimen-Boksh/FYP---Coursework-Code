@@ -1,6 +1,6 @@
 <?php
     session_start(); // Start a new or resume the existing session
-    if (!isset($_SESSION["user"])){ // Check if the "user" session variable is not set
+    if (!isset($_SESSION["logged_in"])){ // Check if the "user" session variable is not set
         header("Location: login.php"); // Redirect to login page if the user is not logged in
     }
 ?>
