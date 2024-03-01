@@ -1,37 +1,48 @@
 # FYP---Coursework-Code
 All the files related to the actual implementation of my final year project which is the creation of a digital portfolio website with integrated blog features. 
 
-Instructions to run the project:
+Setting Up and Running the Project:
+Requirements
+XAMPP: Download and install XAMPP from here: https://www.apachefriends.org/.
 
-- Downlaod xampp: https://www.apachefriends.org/
-- Run the xampp application, noting the folder location of xampp
-- Open xampp use this website if more help is needed: https://phpandmysql.com/extras/installing-xampp/
-- Start Apache and MySQL
-- Locate the xampp folder 
-- Locate the htdocs folder within the xampp folder
-- Clone this repositry (https://github.com/Shah-Muhaimen-Boksh/FYP---Coursework-Code.git) to the htdocs folder
-- In your browser type the url: http://localhost/FYP---Coursework-Code/
-- All folders & files will be viewable in your browser
-- You will now be able to use the 
-- Use the php version of each file to properly use the project
-
-- when opening php files on a IDE i.e VS code an error message might pop up: 
-    "Cannot validate since no PHP executable is set. Use the setting 'php.validate.executablePath' to configure the PHP executable."
-    is this occurs follow these steps:
-        - locate setting.json
-        - paste this line "php.validate.executablePath": "your_drive:/xampp/php/php.exe" at the end of settings.json
-        - replace "your_drive" with the name of your drive
-        - the error message should be gone now
+Steps:
+1. Start XAMPP:
+    - Open the XAMPP application.
+    - Start the Apache and MySQL services.
+2. Locate XAMPP Folder:
+    - Navigate to the folder where XAMPP is installed on your system. Typically, it's located at C:/xampp/.
+3. Clone Repository:
+    - Clone the project repository (FYP---Coursework-Code) into the htdocs folder within the XAMPP directory.
+4. Access Project:
+    - Open your web browser and type the following URL: http://localhost/FYP---Coursework-Code/.
+    - You should now be able to view all folders and files of the project.
+5. Using PHP Files:
+    - Ensure to use the PHP version of each file to properly utilize the project's functionalities.
+6. IDE Configuration (Optional):
+    - If using Visual Studio Code and encountering a PHP executable path error ( "Cannot validate since no PHP executable is set. Use the setting 'php.validate.executablePath' to configure the PHP executable."):
+        - Locate the settings.json file.
+        - Add the following line at the end: "php.validate.executablePath": "your_drive:/xampp/php/php.exe".
+        - Replace "your_drive" with your actual drive name.
+        - Save the file. The error message should disappear.
         - more help can be found in this website: https://dev.to/3rchuss/how-to-set-up-php-executable-path-in-vscode-xampp-user-s-15ag
 
-Project Main Components: 
-Register Page - User wil register an account with their email address and a password 
-Login Page - User wil login with the same information they registred thier account with
-Portfolio Creator Page - Allows the user to create their own digital portfolio using a toolbar with diffrent functions
-Portfolio Viewer Page - Allows other people to view the users digital portfolio
-Blog Post Creator - Allows the user to post blog posts
-Bog Post Viewer - Allows other people to view the users blog posts
-Contact Page - Allows the user to send messages to admin for any questions, complaints or suggestions 
+Project Components
+1. Register Page:
+    - Allows users to register an account with their email address and password.
+2. Login Page:
+    - Allows users to login with the credentials they registered their account with.
+3. Portfolio Creator Page:
+    - Enables users to create their digital portfolio using various toolbar functions.
+4. Portfolio Viewer Page:
+    - Allows others to view the user's digital portfolio.
+5. Blog Post Creator:
+    - Lets users post blog entries.
+6. Blog Post Viewer:
+    - Allows others to view the user's blog posts.
+7. Contact Page:
+    - Enables users to send messages to the admin for questions, complaints, or suggestions.
 
-If any queries or questions please contact me:
- - email: ec21377@qmul.ac.uk
+
+Contact Information
+For any queries or assistance, please reach out via email:
+Email: ec21377@qmul.ac.uk
