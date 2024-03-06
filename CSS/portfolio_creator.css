@@ -91,14 +91,35 @@ header h1 {
     border-left: 0.5px solid #4169E1; /* Royal Blue border to the left of each item */
     border-right: 0.5px solid #4169E1; /* Royal Blue border to the right of each item */
     padding: 5px 6px; /* Padding inside each list item */
+    cursor: pointer; /* Changes the cursor to a pointer on hover */
 }
 
 /* Toolbar link styles */
-.toolbar a {
+.toolbar button {
     text-decoration: none;
     color: #333; /* Dark grey color for the text */
     font-size: 1em; /* Slightly smaller font size for a more refined look */
     display: block; /* Ensures the link fills the 'cell' */
+    cursor: pointer; /* This makes the cursor a hand pointer when over toolbar texts */
 }
+
+/* Save button style */
+.save button{
+    background: #4169E1; /* Sets a royal blue background for the button */
+    color: white; /* Sets the text color to white for contrast */
+    border: 0.5px solid #f4f4f4; /* Removes the default button border */
+    border-radius: 4px; /* Rounds the corners of the button */
+}
+
+/* Changes button background color on hover for visual feedback */
+.save button:hover {
+    background: #3659b5; /* Darkens the button color on hover */
+}
+
+textarea.draggable {
+    resize: both; /* Allows resizing vertically and horizontally */
+    overflow: auto; /* Ensures the content scrolls if too big for the area */
+}
+
 
 
