@@ -115,8 +115,9 @@
                                 // Check if cursor is in resize zone
                                 const inResizeZone = e.clientX > rect.right - 10 && e.clientY > rect.bottom - 10;
 
-                                //
+                                // Calculate starting X position by subtracting element's left offset from mouse X position
                                 let startX = e.clientX - elem.offsetLeft;
+                                // Calculate starting Y position by subtracting element's top offset from mouse Y position
                                 let startY = e.clientY - elem.offsetTop;
                                 
                                 // if in resizng zone

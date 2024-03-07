@@ -67,9 +67,6 @@ header h1 {
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
     display: flex;
     justify-content: center; /* Center content horizontally */
-    background: rgb(245, 251, 251); /* Light Grey background for consistency */
-    border-top: 0.5px solid #4169E1; /* Royal Blue border at the top */
-    border-bottom: 0.5px solid #4169E1; /* Royal Blue border at the bottom */
     padding: 0 20px; /* Padding on the left and right */
     width: auto; /* Adjust the width as needed */
     max-width: 60%; /* Maximum width of the toolbar, adjust as needed */
@@ -88,10 +85,13 @@ header h1 {
 
 /* Toolbar list item styles */
 .toolbar li {
-    border-left: 0.5px solid #4169E1; /* Royal Blue border to the left of each item */
-    border-right: 0.5px solid #4169E1; /* Royal Blue border to the right of each item */
-    padding: 5px 6px; /* Padding inside each list item */
+    padding: 5px; /* Padding inside each list item */
     cursor: pointer; /* Changes the cursor to a pointer on hover */
+}
+
+/* Adds margin between list items */
+.toolbar li:not(:last-child) {
+    margin-right: -10px; /* Adjusts the right margin to control space between buttons */
 }
 
 /* Toolbar link styles */
@@ -101,13 +101,18 @@ header h1 {
     font-size: 1em; /* Slightly smaller font size for a more refined look */
     display: block; /* Ensures the link fills the 'cell' */
     cursor: pointer; /* This makes the cursor a hand pointer when over toolbar texts */
+    border-radius: 4px; /* Rounds the corners of the button */
+}
+
+/* Changes button background color on hover for visual feedback */
+.toolbar button:hover {
+    background: darkgray; /* Darkens the button color on hover */
 }
 
 /* Save button style */
 .save button{
     background: #4169E1; /* Sets a royal blue background for the button */
     color: white; /* Sets the text color to white for contrast */
-    border: 0.5px solid #f4f4f4; /* Removes the default button border */
     border-radius: 4px; /* Rounds the corners of the button */
 }
 
