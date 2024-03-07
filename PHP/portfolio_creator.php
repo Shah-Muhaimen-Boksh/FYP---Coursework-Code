@@ -300,101 +300,134 @@
                     <!-- Option to insert a video -->
                     <li><button id="insertVideo">Insert Video</button></li>
                     <script>
+                        // Wait for the document to fully load before executing the script
                         document.addEventListener('DOMContentLoaded', (event) => {
+                        // Attach an event listener to the 'Insert Video' button
                         document.getElementById('insertVideo').addEventListener('click', function insertVideo() {
-                            // Prompt user for image name
+                            // Prompt the user to enter the name of the video file
                             const videoName = prompt('Enter the video name (with extension):', '');
-                            if (!videoName) return; // Exit if prompt is empty
+                            // Exit the function if no name is entered
+                            if (!videoName) return;
 
+                            // Create a new video element
                             const video = document.createElement('video');
+                            // Set the source of the video to the entered filename
                             video.src = `../Videos/${videoName}`;
-                            video.controls = true; // Adds video controls (play, pause, etc.)
+                            // Enable video controls (play, pause, etc.)
+                            video.controls = true;
 
+                            // Display an error message if the video cannot be loaded
                             video.onerror = () => {
                                 alert('Video does not exist. Please enter a valid video name.');
+                                // Prompt the user again for a video name
                                 insertVideo(); // Recursively call the function to prompt again
                             };
 
+                            // Function to run once the video metadata is loaded
                             video.onloadedmetadata = () => {
-                                // Validating and setting image width
+                                // Prompt the user for the desired video width, ensuring it adheres to constraints
                                 let videoWidth;
                                 while (true) {
+                                    // Prompt the user to enter the width of the video
                                     videoWidth = prompt('Enter desired width (px):');
-                                    if (videoWidth === null) return; // User cancelled the prompt
+                                    if (videoWidth === null) return; // Exit if the prompt is cancelled
+                                    // Validate the entered width
                                     if (!/^\d+$/.test(videoWidth) || videoWidth < 1 || videoWidth > 1696 || videoWidth % 16 !== 0) {
                                         alert('Please enter a positive integer width that is a multiple of 16, greater than or equal to 1 and less than or equal to 1696.');
                                     } else {
-                                        break; // Valid input
+                                        break; // Proceed if the width is valid
                                     }
                                 }
 
-                                // Validating and setting image height
+                                // Prompt the user for the desired video height, ensuring it adheres to constraints
                                 let videoHeight;
                                 while (true) {
+                                    // Prompt the user to enter the heigth of the video
                                     videoHeight = prompt('Enter desired height (px):');
-                                    if (videoHeight === null) return; // User cancelled the prompt
+                                    if (videoHeight === null) return; // Exit if the prompt is cancelled
+                                    // Validate the entered height
                                     if (!/^\d+$/.test(videoHeight) || videoHeight < 1 || videoHeight > 549 || videoHeight % 9 !== 0) {
                                         alert('Please enter a positive integer height that is a multiple of 9, greater than or equal to 1 and less than or equal to 549.');
                                     } else {
-                                        break; // Valid input
+                                        break; // Proceed if the height is valid
                                     }
                                 }
 
+                                // Set CSS properties for the video element
                                 video.style.position = 'absolute';
                                 video.style.cursor = 'move';
                                 video.classList.add('resizable');
-                                video.style.maxWidth = '100%'; // Ensure video is not bigger than its container
+                                video.style.maxWidth = '100%'; // Prevent the video from exceeding the width of its container
 
+                                // Apply the user-defined dimensions to the video
                                 video.style.width = `${videoWidth}px`;
                                 video.style.height = `${videoHeight}px`;
 
+                                // Add the video element to the body of the document
                                 document.body.appendChild(video);
-                                const headerHeight = document.querySelector('header').offsetHeight + 20; // +20 for some margin
+                                // Position the video element appropriately on the screen
+                                const headerHeight = document.querySelector('header').offsetHeight + 20; // Additional margin considered
                                 video.style.top = `${Math.max(window.innerHeight / 2 - video.offsetHeight / 2, headerHeight)}px`;
                                 video.style.left = `${window.innerWidth / 2 - video.offsetWidth / 2}px`;
+                               
+                                 // Make the video draggable
                                 makeDraggable(video);
                             };
 
+                            // Function to enable dragging of the video element
                             function makeDraggable(elem) {
+                                // Listen for the mouse down event on the element
                                 elem.addEventListener('mousedown', function(e) {
+                                    // Record the initial mouse position
                                     let prevX = e.clientX;
                                     let prevY = e.clientY;
+                                    // When moving the mouse, call the onMouseMove function
                                     document.addEventListener('mousemove', onMouseMove);
+                                    // When releasing the mouse button, call the onMouseUp function
                                     document.addEventListener('mouseup', onMouseUp);
 
+                                    // Function to handle mouse movement
                                     function onMouseMove(e) {
+                                        // Calculate new position based on the current mouse position
                                         const newX = prevX - e.clientX;
                                         const newY = prevY - e.clientY;
 
+                                        // Get the current position of the element
                                         const rect = elem.getBoundingClientRect();
+                                        // Update the position of the element
                                         elem.style.left = rect.left - newX + "px";
                                         elem.style.top = rect.top - newY + "px";
 
+                                        // Update previous position for the next movement
                                         prevX = e.clientX;
                                         prevY = e.clientY;
 
-                                        // Constraints
-                                        const maxTop = document.querySelector('header').offsetHeight;
-                                        const maxBottom = window.innerHeight - elem.offsetHeight;
-                                        const maxLeft = 0;
-                                        const maxRight = window.innerWidth - elem.offsetWidth;
+                                        // Define constraints to keep the element within visible area
+                                        const maxTop = document.querySelector('header').offsetHeight; // Minimum Y position
+                                        const maxBottom = window.innerHeight - elem.offsetHeight; // Maximum Y position
+                                        const maxLeft = 0; // Minimum X position
+                                        const maxRight = window.innerWidth - elem.offsetWidth; // Maximum X position
 
-                                        // Apply constraints
+                                        // Apply constraints to prevent the element from moving out of the viewport
                                         elem.style.top = Math.max(maxTop, Math.min(rect.top - newY, maxBottom)) + "px";
                                         elem.style.left = Math.max(maxLeft, Math.min(rect.left - newX, maxRight)) + "px";
                                     }
 
+                                    // Function to handle mouse button release
                                     function onMouseUp() {
+                                        // Remove event listeners to stop moving the element
                                         document.removeEventListener('mousemove', onMouseMove);
                                         document.removeEventListener('mouseup', onMouseUp);
                                     }
                                 });
                             }
 
-                            // Optional: Add functionality to delete the image with a delete key press
-                            video.tabIndex = 0; // Make img focusable to capture key events (may require CSS adjustments for outline)
+                            // Adds functionality to delete the video with a delete or backspace key press
+                            video.tabIndex = 0; // Make video focusable to capture key events
                             video.addEventListener('keydown', (e) => {
+                                // Check if the pressed key is 'Delete' or 'Backspace'
                                 if (e.key === 'Delete' || e.key === 'Backspace') {
+                                    // Remove the video element from the document
                                     video.remove();
                                 }
                             });
