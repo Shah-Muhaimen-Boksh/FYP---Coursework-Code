@@ -33,7 +33,9 @@
             <nav>
                 <ul>
                     <!-- Link to the creator page -->
-                    <li><a href="portfolio_creator.php">Portfolio Creator Page</a></li>
+                    <li><a href="portfolio_creator_nosave.php">Portfolio Creator Page Nosave </a></li>
+                    <!-- Link to the creator page -->
+                    <li><a href="portfolio_creator.php">Portfolio Creator Page Save (Broken)</a></li>
                     <!-- Link to the viewing page -->
                     <li><a href="portfolio_viewer.php">Portfolio Viewing Page</a></li>
                     <!-- Link to the blog post creator page -->

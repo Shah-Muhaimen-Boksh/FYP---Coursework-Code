@@ -1,8 +1,104 @@
 <?php
     session_start(); // Start a new or resume the existing session
+    
+    require_once "database.php";
+
     if (!isset($_SESSION["logged_in"])){ // Check if the "user" session variable is not set
         header("Location: login.php"); // Redirect to login page if the user is not logged in
+        exit(); // Prevent further script execution after a redirect
     }
+
+    // Check if the request method is POST
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        // Set the content type of the response to application/json
+        header('Content-Type: application/json');
+        // Decode the JSON received from the request body
+        $data = json_decode(file_get_contents('php://input'), true);
+        // Retrieve the user's ID from the session
+        $user_id = $_SESSION['user_id'];
+        // Assign the 'elements' array from the decoded JSON to a variable
+        $elements = $data['elements'];
+
+        // Loop through each element in the 'elements' array
+        foreach ($elements as $element) {
+            // Escape 'element_number' to prevent SQL injection
+            $element_number = mysqli_real_escape_string($database_connection, $element['element_number']);
+            // Escape 'type' to prevent SQL injection
+            $type = mysqli_real_escape_string($database_connection, $element['type']);
+            // Escape 'content' to prevent SQL injection
+            $content = mysqli_real_escape_string($database_connection, $element['content']);
+            // Escape and encode 'size' to prevent SQL injection and convert array to JSON string
+            $size = mysqli_real_escape_string($database_connection, json_encode($element['size']));
+            // Escape and encode 'position' to prevent SQL injection and convert array to JSON string
+            $position = mysqli_real_escape_string($database_connection, json_encode($element['position']));
+
+            // Define the SQL statement for inserting or updating the portfolio element
+            $sql = "INSERT INTO portfolio_elements (user_id, element_number, type, content, size, position) VALUES (?, ?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE content = VALUES(content), size = VALUES(size), position = VALUES(position)";
+            // Initialize a new statement
+            $stmt = mysqli_stmt_init($database_connection);
+            // Prepare the SQL statement for execution
+            $prepare_stmt = mysqli_stmt_prepare($stmt, $sql);
+            // Check if the statement was successfully prepared
+            if ($prepare_stmt){
+                // Bind user input to the prepared statement as parameters
+                mysqli_stmt_bind_param($stmt, "iissss", $user_id, $element_number, $type, $content, $size, $position);
+                // Execute the prepared statement
+                mysqli_stmt_execute($stmt);
+                // Echo success message as JSON
+                echo json_encode(['status' => 'success', 'message' => 'Portfolio Successfully Saved']);
+            }
+            else{
+                // Terminate script execution and display an error message if statement preparation fails
+                die("Something went wrong");
+            }
+        }
+        // Echo a final success message (this line seems redundant and might not execute as expected due to prior echoes and exits)
+        echo json_encode(['status' => 'success']);
+        // Terminate the script
+        exit();
+    } else if ($_SERVER['REQUEST_METHOD'] == 'GET'){ // Check if the request method is GET
+        // Set the content type of the response to application/json
+        header('Content-Type: application/json');
+        // SQL query to select portfolio elements for the current user
+        $sql = "SELECT element_number, type, content, size, position FROM portfolio_elements WHERE user_id = ?";
+
+        // Prepare the SQL statement to prevent SQL injection
+        $stmt = mysqli_prepare($database_connection, $sql);
+
+        // Check if the statement was prepared correctly
+        if ($stmt) {
+            // Bind the user_id parameter to the prepared statement
+            mysqli_stmt_bind_param($stmt, "i", $_SESSION["user_id"]);
+
+            // Execute the prepared statement
+            mysqli_stmt_execute($stmt);
+
+            // Get the result of the query
+            $result = $stmt->get_result();
+            $elements = array();
+            // Fetch each row of the result set as an associative array
+            while($row = $result->fetch_assoc()) {
+                // Add each row to the elements array
+                $elements[] = $row;
+            }
+            // Encode the elements array to JSON and output it
+            echo json_encode($elements);
+        } else {
+            // Output an error message in JSON format if statement preparation fails
+            echo json_encode(['status' => 'error', 'message' => 'Failed to prepare statement.']);
+            // Set HTTP response code to 500 - Internal Server Error
+            http_response_code(500);
+        }
+        // Terminate the script
+        exit();  
+    } else {
+        // Handle any request methods other than POST or GET
+        echo json_encode(['status' => 'error', 'message' => 'Invalid request method.']);
+        // Set HTTP response code to 405 to indicate the method is not allowed
+        http_response_code(405); // Method Not Allowed
+        // Terminate the script
+        exit();  
+    }   
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +128,9 @@
             <nav>
                 <ul>
                     <!-- Link to the creator page -->
-                    <li><a href="portfolio_creator.php">Portfolio Creator Page</a></li>
+                    <li><a href="portfolio_creator_nosave.php">Portfolio Creator Page Nosave </a></li>
+                    <!-- Link to the creator page -->
+                    <li><a href="portfolio_creator.php">Portfolio Creator Page Save (Broken)</a></li>
                     <!-- Link to the viewing page -->
                     <li><a href="portfolio_viewer.php">Portfolio Viewing Page</a></li>
                     <!-- Link to the blog post creator page -->
@@ -54,6 +152,9 @@
                     <!-- Option to insert a textbox -->
                     <li><button id="insertTextbox">Insert Textbox</button></li>
                     <script>
+                        // Global counter for element IDs
+                        let element_number = 0;
+
                         // Wait until the DOM is fully loaded
                         document.addEventListener('DOMContentLoaded', (event) => {
                         // Listen for clicks on the 'insertTextbox' button
@@ -87,6 +188,9 @@
                             textbox.style.left = `${centerX}px`;
                             textbox.style.top = `${centerY}px`;
 
+                            // Assign unique ID
+                            textbox.setAttribute('data-element-number', element_number++);
+                            
                             // Add the new textbox to the body of the document
                             document.body.appendChild(textbox);
 
@@ -234,6 +338,9 @@
                                 img.style.width = `${imageWidth}px`;
                                 img.style.height = `${imageHeight}px`;
 
+                                // Assign unique ID
+                                img.setAttribute('data-element-number', element_number++);
+
                                 // Add the image to the body of the document
                                 document.body.appendChild(img);
                                 const headerHeight = document.querySelector('header').offsetHeight + 20;
@@ -363,6 +470,9 @@
                                 video.style.width = `${videoWidth}px`;
                                 video.style.height = `${videoHeight}px`;
 
+                                // Assign unique ID
+                                video.setAttribute('data-element-number', element_number++);
+
                                 // Add the video element to the body of the document
                                 document.body.appendChild(video);
                                 // Position the video element appropriately on the screen
@@ -435,12 +545,127 @@
                     });
                     </script>
                     <!-- Option to save the current work -->
-                    <li class="save"><button>Save</button></li> 
+                    <li class="save"><button id="saveButton">Save</button></li> 
+                    <script>
+                        // Add an event listener for the click event on the save button
+                        document.querySelector('#saveButton').addEventListener('click', function() {
+                            // Initialize an empty array to store element data
+                            let elements = [];
+                            // Iterate over each element with the class 'draggable'
+                            document.querySelectorAll('.draggable').forEach((elem) => {
+                                let element_number, type, content, size, position;
+
+                                // Extract the element number from the element's data attribute and parse it as an integer
+                                let element_number = parseInt(elem.getAttribute('data-element-number'), 10);
+                                
+                                // Check the element's tag to determine its type and extract relevant data
+                                if (elem.tagName === 'TEXTAREA') {
+                                    type = 'textbox'; // Set type as textbox for textarea elements
+                                    content = elem.value; // Use the textarea's content
+                                } else if (elem.tagName === 'IMG') {
+                                    type = 'image'; // Set type as image for img elements
+                                    content = elem.src; // Use the image source URL
+                                } else if (elem.tagName === 'VIDEO') {
+                                    type = 'video'; // Set type as video for video elements
+                                    content = elem.src; // Use the video source URL
+                                }
+
+                                // Store the element's size as an object with width and height properties
+                                size = {width: elem.style.width, height: elem.style.height};
+                                // Store the element's position as an object with left and top properties
+                                position = {left: elem.style.left, top: elem.style.top};
+
+                                // Add the element's data to the elements array
+                                elements.push({element_number, type, content, size, position});
+                            });
+
+                            // Call the function to save elements to the database with the elements array
+                            saveElementsToDatabase(elements);
+
+                            // Define the function to save elements to the database
+                            function saveElementsToDatabase(elements) {
+
+                                // Use the Fetch API to send a POST request to 'portfolio_creator.php'
+                                fetch('portfolio_creator.php', {
+                                method: 'POST', // Specify the request method
+                                headers: {
+                                    'Content-Type': 'application/json', // Set the content type of the request body to JSON
+                                },
+                                body: JSON.stringify({elements: elements}) // Convert the elements object to a JSON string and set as request body
+                            })
+                            .then(response => response.json()) // Parse the JSON response
+                            .then(data => console.log(data)) // Log the response data to the console
+                            .catch(error => console.error('Error:', error)); // Log any errors to the console
+                            }
+                        });
+                    </script>
                 </ul>
             </nav>
         <div>
     </header>
 
+    <script>
+        // Defines a function to load portfolio elements into the webpage
+        function loadPortfolioElements(elements) {
+            // Check if the elements array is empty
+            if (elements.length === 0) {
+                // Log a message to the console if there are no elements
+                console.log("No portfolio elements to display.");
+                return; // Exit the function early
+            }
 
+            // Iterate over each element in the elements array
+            elements.forEach(elem => {
+                let element;
+                // Switch case based on the element type
+                switch(elem.type) {
+                    case 'image':
+                        // Create an img element for type 'image'
+                        element = document.createElement('img');
+                        element.src = elem.content; // Set the source of the image
+                        break;
+                    case 'textbox':
+                        // Create a textarea element for type 'textbox'
+                        element = document.createElement('textarea');
+                        element.textContent = elem.content; // Set the text content
+                        break;
+                    case 'video':
+                        // Create a video element for type 'video'
+                        element = document.createElement('video');
+                        element.src = elem.content; // Set the source of the video
+                        element.controls = true; // Enable video controls
+                        break;
+                }
+                if(element) {
+                    // Set the CSS styles for width, height, position, left, and top based on element's data
+                    element.style.width = elem.size.width;
+                    element.style.height = elem.size.height;
+                    element.style.position = 'absolute';
+                    element.style.left = elem.position.left;
+                    element.style.top = elem.position.top;
+                    // Append the element to the document body or another specified parent element
+                    document.body.appendChild(element);
+                }
+            });
+        }
+
+        // Initiate a fetch call to 'portfolio_creator.php' with the specified options
+        fetch('portfolio_creator.php', {
+            method: 'GET', // Specify the HTTP method, 'GET' or 'POST' depending on your needs
+            headers: {
+                'Content-Type': 'application/json', // Set the request's content type header
+            }
+        })
+        .then(response => response.json()) // Parse the JSON response
+        .then(data => {
+            if(data.length === 0) {
+                // Log a message if no elements were found in the response
+                console.log("No elements to load, showing creator interface.");
+            } else {
+                loadPortfolioElements(data); // Call loadPortfolioElements with the response data if elements exist
+            }
+        })
+        .catch(error => console.error('Error:', error)); // Log any errors to the console
+    </script>
 </body>
 </html>

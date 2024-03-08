@@ -1,7 +1,7 @@
 <?php
     session_start(); // Start a new or resume the existing session
     if (isset($_SESSION["logged_in"])){ // Check if the "logged_in" session variable is set
-        header("Location: portfolio_creator.php"); // Redirect to portfolio_creator.php if the user is logged in
+        header("Location: portfolio_creator_nosave.php"); // Redirect to portfolio_creator_nosave.php if the user is logged in
     }
 ?>
 

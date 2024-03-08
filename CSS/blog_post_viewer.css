@@ -86,7 +86,7 @@ header h1 {
 
 /* Styles for table data cells */
 .blog_post_table td {
-    border-top: 0.5px solid black; /* Optional: you can remove this if you want a cleaner look without internal borders */
+    border-top: 0.5px solid black; /* Adds a black border */
     padding: 10px;
     color: #333;
 }
@@ -106,7 +106,9 @@ header h1 {
     font-size: 24px; /* Increases the font size */
     text-align: center; /* Centers the text horizontally */
     display: block; /* Ensures the element is block-level for margin auto to work */
-    background-color: #f4f4f4; /* Optional: sets a background color */
+    background-color: #4169E1; /*Sets a background color */
+    color: white;
+
 }
 
 

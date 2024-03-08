@@ -1,3 +1,10 @@
+<?php
+    session_start(); // Start a new or resume the existing session
+    if (!isset($_SESSION["logged_in"])){ // Check if the "logged_in" session variable is not set
+        header("Location: login.php"); // Redirect to login.php if the user is not logged in
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,12 +23,15 @@
         <div>
             <h1>Portfolio Viewer Page </h1>
         </div>
+        
         <!-- The navbar contains hypelinks to the other pages -->
         <div class="navbar">
             <nav>
                 <ul>
                     <!-- Link to the creator page -->
-                    <li><a href="portfolio_creator.php">Portfolio Creator Page</a></li>
+                    <li><a href="portfolio_creator_nosave.php">Portfolio Creator Page Nosave </a></li>
+                    <!-- Link to the creator page -->
+                    <li><a href="portfolio_creator.php">Portfolio Creator Page Save (Broken)</a></li>
                     <!-- Link to the viewing page -->
                     <li><a href="portfolio_viewer.php">Portfolio Viewing Page</a></li>
                     <!-- Link to the blog post creator page -->
