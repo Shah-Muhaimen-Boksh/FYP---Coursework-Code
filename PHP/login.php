@@ -63,7 +63,7 @@
                                     session_start(); // Start a new session
                                     $_SESSION["logged_in"] = "yes"; // Set session variable for checking if the user is logged in
                                     $_SESSION["user_id"] = $user["user_id"]; // Set session variable to store user_id
-                                    header("Location: portfolio_creator.php"); // Redirect to portfolio creator page
+                                    header("Location: portfolio_creator_nosave.php"); // Redirect to portfolio creator page
                                     exit(); // Terminate script execution
                                 }
                                 else{
