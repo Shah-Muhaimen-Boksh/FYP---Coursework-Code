@@ -12,7 +12,7 @@ Steps:
 2. Locate XAMPP Folder:
     - Navigate to the folder where XAMPP is installed on your system. Typically, it's located at C:/xampp/.
 3. Clone Repository:
-    - Clone the project repository (FYP---Coursework-Code) into the htdocs folder within the XAMPP directory.
+    - Clone this project repository (https://github.com/Shah-Muhaimen-Boksh/FYP---Coursework-Code.git) into the htdocs folder within the XAMPP directory.
 4. Access Project:
     - Open your web browser and type the following URL: http://localhost/FYP---Coursework-Code/.
     - You should now be able to view all folders and files of the project.
