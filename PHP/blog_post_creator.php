@@ -66,11 +66,11 @@
 
                         // Check if blog post header is greater than 128 characters
                         if (strlen($blog_post_header) > 128){
-                            array_push($errors, "Message subject cannot exceed 128 characters"); // Add error message to errors array
+                            array_push($errors, "Blog Post header cannot exceed 128 characters"); // Add error message to errors array
                         }
                         // Check if blog post body is greater than 10000 characters
                         if (strlen($blog_post_body) > 10000){
-                            array_push($errors, "Message body cannot exceed 10000 characters"); // Add error message to errors array
+                            array_push($errors, "Blog Post body cannot exceed 10000 characters"); // Add error message to errors array
                         }
                         
 
