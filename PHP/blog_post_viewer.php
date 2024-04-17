@@ -1,10 +1,12 @@
+<!-- This php document creates a blog post viewer page with a table that show the users blog posts -->
+
+<!-- THe php code below tracks user sessions and also retrives the all of the users blog posts form the database -->
 <?php
     session_start(); // Start a new or resume the existing session
     if (!isset($_SESSION["logged_in"])){ // Check if the "logged_in" session variable is not set
         header("Location: login.php"); // Redirect to login.php if the user is not logged in
     }
 
-    
     require_once "database.php"; // Connect to database
 
     // SQL statement to retrieve blog posts for the logged-in user, ordered by date descending
@@ -45,7 +47,7 @@
     }
 
 ?>
-<!-- This php document creates a blog post viewer page with a table that show the users blog posts -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -125,7 +127,6 @@
     <?php
     // End the if-else block
     endif; ?>
-
 
 </body>
 </html>

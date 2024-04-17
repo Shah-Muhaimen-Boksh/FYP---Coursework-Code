@@ -1,3 +1,6 @@
+<!-- This php document creates a login page with a form for user authentication and checks the information with what is stored on a users table wtihin a database -->
+
+<!-- php code below tracks user sessions -->
 <?php
     session_start(); // Start a new or resume the existing session
     if (isset($_SESSION["logged_in"])){ // Check if the "logged_in" session variable is set
@@ -5,7 +8,6 @@
     }
 ?>
 
-<!-- This php document creates a login page with a form for user authentication and checks the information with what is stored on a users table wtihin a database-->
 <!DOCTYPE html>
 <html lang="en">
 <head>

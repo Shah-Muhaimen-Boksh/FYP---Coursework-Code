@@ -24,7 +24,7 @@ Steps:
         - Add the following line at the end: "php.validate.executablePath": "your_drive:/xampp/php/php.exe".
         - Replace "your_drive" with your actual drive name.
         - Save the file. The error message should disappear.
-        - more help can be found in this website: https://dev.to/3rchuss/how-to-set-up-php-executable-path-in-vscode-xampp-user-s-15ag
+        - more help can be found on this website: https://dev.to/3rchuss/how-to-set-up-php-executable-path-in-vscode-xampp-user-s-15ag
 
 Project Components
 1. Register Page:

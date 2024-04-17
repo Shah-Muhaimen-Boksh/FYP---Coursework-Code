@@ -1,3 +1,6 @@
+<!-- This php document is the portfolio viewer page and is supposed to allow othe people to view the users portfolios -->
+
+<!-- php code below tracks user sessions -->
 <?php
     session_start(); // Start a new or resume the existing session
     if (!isset($_SESSION["logged_in"])){ // Check if the "logged_in" session variable is not set

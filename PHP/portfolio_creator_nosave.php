@@ -1,3 +1,6 @@
+<!-- This php document is the portfolio creator page and allows the user to create a digital portfolio with interactable elements -->
+
+<!-- php code below tracks user sessions -->
 <?php
     session_start(); // Start a new or resume the existing session
     if (!isset($_SESSION["logged_in"])){ // Check if the "logged_in" session variable is not set

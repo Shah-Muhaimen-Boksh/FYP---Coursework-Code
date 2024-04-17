@@ -18,7 +18,7 @@ header {
     border-bottom: 0.5px solid black; /* Black border at the bottom */
     border-right: 2px solid black; /* Black border at the top */
     border-left: 0.5px solid black; /* Black border at the bottom */
-    width: 100%; /* Optional, depending on desired layout */
+    width: 100%;
 }
 
 /* Title styles, placed at the top left */

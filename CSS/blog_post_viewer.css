@@ -18,7 +18,7 @@ header {
     border-bottom: 0.5px solid black; /* Black border at the bottom */
     border-right: 2px solid black; /* Black border at the top */
     border-left: 0.5px solid black; /* Black border at the bottom */
-    width: 100%; /* Optional, depending on desired layout */
+    width: 100%;
 }
 
 /* Title styles, placed at the top left */
@@ -81,7 +81,6 @@ header h1 {
     color: white;
     text-align: left;
     padding: 12px;
-    /* No need for individual border-radius on th because of overflow: hidden on the table */
 }
 
 /* Styles for table data cells */

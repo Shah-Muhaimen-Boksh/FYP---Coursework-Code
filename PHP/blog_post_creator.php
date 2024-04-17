@@ -1,10 +1,13 @@
+<!-- This php document creates a blog post creator page with a form to post blog posts which is stored on a blog_posts table wtihin a database-->
+
+<!-- php code below tracks user sessions -->
 <?php
     session_start(); // Start a new or resume the existing session
     if (!isset($_SESSION["logged_in"])){ // Check if the "logged_in" session variable is not set
         header("Location: login.php"); // Redirect to login.php if the user is not logged in
     }
 ?>
-<!-- This php document creates a blog post creator page with a form to post blog posts which is stored on a blog_posts table wtihin a database-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -97,9 +100,7 @@
                                 die("Something went wrong"); // Display error message if statement preparation fails
                             }
                             // Using prepared statements with parameter binding prevents SQL injection by separating SQL logic and data.
-
                         }
-
                     }
                     ?>
 

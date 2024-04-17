@@ -1,5 +1,6 @@
-<?php
+<!-- This PHP document establishes a connection to the MySQL database and terminates the script with an error message if the connection fails. -->
 
+<?php
 $hostName = "localhost"; // Database server address
 $dbUsers = "root";  // Database username
 $dbPassword = ""; // Database password
