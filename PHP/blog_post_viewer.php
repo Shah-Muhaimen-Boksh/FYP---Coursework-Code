@@ -76,7 +76,7 @@
             <nav>
                 <ul>
                     <!-- Link to the creator page -->
-                    <li><a href="portfolio_creator_nosave.php">Portfolio Creator Page</a></li>
+                    <li><a href="portfolio_creator.php">Portfolio Creator Page</a></li>
                     <!-- Link to the blog post creator page -->
                     <li><a href="blog_post_creator.php">Blog Post Creator Page</a></li>
                     <!-- Link to the blog post viewer page -->
