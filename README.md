@@ -45,4 +45,4 @@ Project Components
 
 Contact Information
 For any queries or assistance, please reach out via email:
-Email: ec21377@qmul.ac.uk
+Email: ec21377@qmul.ac.uk 
